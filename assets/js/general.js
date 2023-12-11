@@ -55,6 +55,13 @@ function makeDomFailiure(dom, text = "") {
     if (dom.classList.contains("hidden")) dom.classList.remove("hidden");
 }
 
+function isArrayAndNotEmpty(variable) {
+    if (!Array.isArray(variable)) return false;
+    else if (variable.length < 1) return false;
+
+    return true;
+}
+
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }

@@ -1,3 +1,9 @@
+//enum created to store
+const VALUES_TYPES_ENUM = {
+    Min: 0,
+    Max: 1,
+};
+
 function generateRandomArray(valueTypes, arrayLength) {
     const uniqueArray = [];
 
@@ -26,12 +32,6 @@ function recursiveRandomFiller(
         valuesPossabilities[VALUES_TYPES_ENUM.Max]
     );
 
-    console.log(
-        randomNumber,
-        valuesPossabilities[VALUES_TYPES_ENUM.Min],
-        valuesPossabilities[VALUES_TYPES_ENUM.Max]
-    );
-
     if (!arrayIncludesValue(array, randomNumber)) {
         array.push(randomNumber);
         fillIndex++;
@@ -53,9 +53,3 @@ function arrayIncludesValue(array, value) {
 
     return false;
 }
-
-//enum created to store
-const VALUES_TYPES_ENUM = {
-    Min: 0,
-    Max: 1,
-};

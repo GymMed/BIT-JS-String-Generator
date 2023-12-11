@@ -21,16 +21,17 @@ let generatedRandomArrayFirst = [];
 let generatedRandomArraySecond = [];
 
 twoArraysButtonDom.addEventListener("click", function () {
-    minValue = minValueDom.value;
-    maxValue = maxValueDom.value;
+    minValue = parseFloat(minValueDom.value);
+    maxValue = parseFloat(maxValueDom.value);
     setArrayLength = arrayLengthDom.value;
+    const minMaxValues = [minValue, maxValue];
 
     generatedRandomArrayFirst = generateRandomArray(
-        [minValue, maxValue],
+        minMaxValues,
         setArrayLength
     );
     generatedRandomArraySecond = generateRandomArray(
-        [minValue, maxValue],
+        minMaxValues,
         setArrayLength
     );
 
