@@ -48,6 +48,7 @@ sortButtonDom.addEventListener("click", function () {
 });
 
 let generatedFirstString = (generatedSecondString = generatedThirdString = "");
+let stringsArray = [];
 
 const threeStringsFirstResultsDom = document.querySelector(
     "#three-strings-first-results"
@@ -100,6 +101,14 @@ threeStringsButtonDom.addEventListener("click", function () {
         threeStringsThirdResultsDom,
         `Generated third string: <br>"${generatedThirdString}"`
     );
+
+    stringsArray = getCombinedArrayOfArrays([
+        generatedFirstString,
+        generatedSecondString,
+        generatedThirdString,
+    ]);
+
+    console.log("Combination: " + stringsArray);
 });
 
 const combinationsResultsDom = document.querySelector(
@@ -109,18 +118,10 @@ const combinationsButtonDom = document.querySelector(
     "#three-strings-combinations-btn"
 );
 
-let stringsArray = [];
 let uniqueStringsArray = [];
+let noneRepetitiveArray = [];
 
 combinationsButtonDom.addEventListener("click", function () {
-    stringsArray = getCombinedArrayOfArrays([
-        generatedFirstString,
-        generatedSecondString,
-        generatedThirdString,
-    ]);
-
-    console.log("Combination: " + stringsArray);
-
     uniqueStringsArray = [];
     let totalUniqueStrings = getUniqueArraysCount(
         stringsArray,
@@ -128,8 +129,8 @@ combinationsButtonDom.addEventListener("click", function () {
     );
 
     console.log(
-        "Total unique string: " + totalUniqueStrings,
-        "\nAll unique string: ",
+        "Total unique strings: " + totalUniqueStrings,
+        "\nAll unique strings: ",
         uniqueStringsArray
     );
     let output =
@@ -137,4 +138,37 @@ combinationsButtonDom.addEventListener("click", function () {
         `<br>All unique string: <br>"${uniqueStringsArray.join(", ")}"`;
 
     makeDomSuccess(combinationsResultsDom, output);
+});
+
+const noneRepetitiveResultsDom = document.querySelector(
+    "#three-strings-none-repetitve-results"
+);
+const noneRepetitiveButtonDom = document.querySelector(
+    "#three-strings-none-repetitve-btn"
+);
+
+noneRepetitiveButtonDom.addEventListener("click", function () {
+    if (!isArrayAndNotEmpty(stringsArray)) {
+        makeDomFailiure(
+            noneRepetitiveResultsDom,
+            "You need to generate 3 strings first in order to get none repetitive values!"
+        );
+        return;
+    }
+
+    let totalNoneRepetitveValues = getNoneRepetetiveCount(
+        stringsArray,
+        noneRepetitiveArray
+    );
+
+    console.log(
+        "Total none repetitive strings: " + totalNoneRepetitveValues,
+        "\nAll none repetitive strings: ",
+        noneRepetitiveArray
+    );
+    let output =
+        `Total unique string: ${totalNoneRepetitveValues}` +
+        `<br>All unique string: <br>"${noneRepetitiveArray.join(", ")}"`;
+
+    makeDomSuccess(noneRepetitiveResultsDom, output);
 });

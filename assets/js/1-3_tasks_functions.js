@@ -86,3 +86,27 @@ function fillArray(array, arrayLength, filledWith = 0) {
 
     return array;
 }
+
+function getNoneRepetetiveCount(array, finalArray) {
+    let combinationCount = 0;
+    let noneRepetitiveCount = 0;
+
+    for (let value of array) {
+        combinationCount = 0;
+
+        for (let value2 of array) {
+            if (value === value2) {
+                combinationCount++;
+
+                if (combinationCount === 2) break;
+            }
+        }
+
+        if (combinationCount === 1) {
+            finalArray.push(value);
+            noneRepetitiveCount++;
+        }
+    }
+
+    return noneRepetitiveCount;
+}

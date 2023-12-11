@@ -45,7 +45,7 @@ twoArraysButtonDom.addEventListener("click", function () {
     let firstOutput = `First array: <br>"${generatedRandomArrayFirst.join(
         ", "
     )}"`;
-    let secondOutput = `Second array: <br>"${generatedRandomArrayFirst.join(
+    let secondOutput = `Second array: <br>"${generatedRandomArraySecond.join(
         ", "
     )}"`;
 
